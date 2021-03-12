@@ -10,10 +10,10 @@ const UserCard = ({ user, showDetails, onClickViewMore }) => {
         </span>
 
         <button onClick={onClickViewMore}>
-          {showDetails ? "Ver menos" : "Ver mais"}
+          {showDetails === user.email ? "Ver menos" : "Ver mais"}
         </button>
       </div>
-      {showDetails && (
+      {showDetails === user.email && (
         <div>
           <span>{user.phone}</span>
           <br />

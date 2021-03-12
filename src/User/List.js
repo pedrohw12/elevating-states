@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
+
 import UserCard from "./Card";
+import "../styles.css";
 
 // fake api
 import data from "../data.json";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
-  const [showDetails, setShowDetails] = useState(false);
-  const [userToShow, setUserToShow] = useState("");
+  const [showDetails, setShowDetails] = useState("");
+  const [userToShow, setUserToShow] = useState({});
 
-  function toggleShowMore() {}
+  function toggleShowMore(email) {
+    if (showDetails === email) {
+      setShowDetails("");
+    } else {
+      setShowDetails(email);
+    }
+  }
 
   useEffect(() => {
     setUsers(data.results);
@@ -21,28 +29,13 @@ const UserList = () => {
 
   return (
     <>
-      <ul
-        style={{
-          listStyle: "none",
-          backgroundColor: "#ddd",
-          borderRadius: 10,
-          padding: 20
-        }}
-      >
+      <ul className="list">
         {users.map((user) => (
-          <li
-            style={{
-              backgroundColor: "#666",
-              margin: 5,
-              borderRadius: 10,
-              padding: 5
-            }}
-            key={user.email}
-          >
+          <li className="list-item" key={user.email}>
             <UserCard
               user={user}
               showDetails={showDetails}
-              onClickViewMore={() => setShowDetails(!showDetails)}
+              onClickViewMore={() => toggleShowMore(user.email)}
             />
           </li>
         ))}

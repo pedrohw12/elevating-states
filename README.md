@@ -102,7 +102,7 @@ export default UserCard;
 
 ## 2
 - Ao clicar em um item da lista, este será ativado e desativará outro. Ou seja, apenas um item ficará ativo. Isso acontece em casos onde há algumas opções de checkbox, e apenas uma opção pode ser escolhida. Por exemplo, uma pergunta que exige que seja marcado apenas uma alternativa.
-- Para ver este exemplo rodando, veja o commit - 
+- Para ver este exemplo rodando, veja o commit - List: mostrar detalhes de apenas um usuário por vez
 
 
 ## 3

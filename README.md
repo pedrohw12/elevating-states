@@ -8,7 +8,7 @@ Casos a serem abordados:
 - Ao clicar em um item da lista, este item será ativado.
 - O que quero dizer com 'ativado', é que ele será selecionado. Sabe quando temos uns itens com checkbox e queremos marcar ele? Então, ao marcar ele, digamos aqui, que ele estaria ativo.
 - A ideia deste primeiro caso, é podermos ativar quantos itens da lista quisermos. Por exemplo, marcar o checkbox de quantos itens desejarmos.
-- Para ver este exemplo rodando, veja o commit -
+- Para ver este exemplo rodando, veja o commit - Ativar quantos cards quiser
 - Código:
 
 ```javascript

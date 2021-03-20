@@ -200,5 +200,84 @@ export default UserCard;
 
 ## 3
 - Ao clicar no botão 'desmarcar todos'/'marcar todos', faremos um toggle, ativando todos os itens da lista ou desativando todos eles.
-- Para ver este exemplo rodando, veja o commit - 
+- Para ver este exemplo rodando, veja o commit - Ativar ou desativar todos
+
+``` javascript
+import 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+coloca markdown.to_html
+
+import React, { useState } from "react";
+
+import UserCard from "./Card";
+import "../styles.css";
+
+// fake api
+import data from "../data.js";
+
+const UserList = () => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  function toggleShowMore() {
+    setShowDetails(!showDetails);
+  }
+
+  return (
+    <>
+      <ul className="list">
+        {data.results.map((user) => (
+          <li className="list-item" key={user.email}>
+            <UserCard
+              user={user}
+              showDetails={showDetails}
+              onClickViewMore={toggleShowMore}
+            />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default UserList;
+
+```
+
+``` javascript
+import 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+coloca markdown.to_html
+
+import React from "react";
+
+const UserCard = ({ user, showDetails, onClickViewMore }) => {
+  return (
+    <div>
+      <div>
+        <img src={user.picture.thumbnail} alt={user.name.first} />
+        <span>
+          {user.name.title} {user.name.first} {user.name.last}{" "}
+        </span>
+
+        <button onClick={onClickViewMore}>
+          {showDetails ? "Ver menos" : "Ver mais"}
+        </button>
+      </div>
+      {showDetails && (
+        <div>
+          <span>{user.phone}</span>
+          <br />
+          {user.dob.age} anos <br />
+          {user.email}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserCard;
+
+```
 

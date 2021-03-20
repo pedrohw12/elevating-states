@@ -62,6 +62,43 @@ export default UserList;
 
 ```
 
+``` javascript
+import 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+coloca markdown.to_html
+
+import React from "react";
+
+const UserCard = ({ user, showDetails, onClickViewMore }) => {
+  return (
+    <div>
+      <div>
+        <img src={user.picture.thumbnail} alt={user.name.first} />
+        <span>
+          {user.name.title} {user.name.first} {user.name.last}{" "}
+        </span>
+
+        <button onClick={onClickViewMore}>
+          {showDetails.includes(user.email) ? "Ver menos" : "Ver mais"}
+        </button>
+      </div>
+      {showDetails.includes(user.email) && (
+        <div>
+          <span>{user.phone}</span>
+          <br />
+          {user.dob.age} anos <br />
+          {user.email}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserCard;
+
+```
+
 
 ## 2
 - Ao clicar em um item da lista, este será ativado e desativará outro. Ou seja, apenas um item ficará ativo. Isso acontece em casos onde há algumas opções de checkbox, e apenas uma opção pode ser escolhida. Por exemplo, uma pergunta que exige que seja marcado apenas uma alternativa.

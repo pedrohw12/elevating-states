@@ -104,6 +104,99 @@ export default UserCard;
 - Ao clicar em um item da lista, este será ativado e desativará outro. Ou seja, apenas um item ficará ativo. Isso acontece em casos onde há algumas opções de checkbox, e apenas uma opção pode ser escolhida. Por exemplo, uma pergunta que exige que seja marcado apenas uma alternativa.
 - Para ver este exemplo rodando, veja o commit - List: mostrar detalhes de apenas um usuário por vez
 
+``` javascript
+import 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+coloca markdown.to_html
+
+import React, { useEffect, useState } from "react";
+
+import UserCard from "./Card";
+import "../styles.css";
+
+// fake api
+import data from "../data.json";
+
+const UserList = () => {
+  const [users, setUsers] = useState([]);
+  const [showDetails, setShowDetails] = useState("");
+  const [userToShow, setUserToShow] = useState({});
+
+  function toggleShowMore(email) {
+    if (showDetails === email) {
+      setShowDetails("");
+    } else {
+      setShowDetails(email);
+    }
+  }
+
+  useEffect(() => {
+    setUsers(data.results);
+  }, []);
+
+  if (!users) {
+    return null;
+  }
+
+  return (
+    <>
+      <ul className="list">
+        {users.map((user) => (
+          <li className="list-item" key={user.email}>
+            <UserCard
+              user={user}
+              showDetails={showDetails}
+              onClickViewMore={() => toggleShowMore(user.email)}
+            />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default UserList;
+
+``` 
+
+``` javascript
+import 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+coloca markdown.to_html
+
+import React, { useState } from "react";
+
+const UserCard = ({ user, showDetails, onClickViewMore }) => {
+  return (
+    <div>
+      <div>
+        <img src={user.picture.thumbnail} alt={user.name.first} />
+        <span>
+          {user.name.title} {user.name.first} {user.name.last}{" "}
+        </span>
+
+        <button onClick={onClickViewMore}>
+          {showDetails === user.email ? "Ver menos" : "Ver mais"}
+        </button>
+      </div>
+      {showDetails === user.email && (
+        <div>
+          <span>{user.phone}</span>
+          <br />
+          {user.dob.age} anos <br />
+          {user.email}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserCard;
+
+``` 
+
 
 ## 3
 - Ao clicar no botão 'desmarcar todos'/'marcar todos', faremos um toggle, ativando todos os itens da lista ou desativando todos eles.
